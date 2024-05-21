@@ -26,7 +26,7 @@ def export_employee_todo_to_csv(employee_id):
 
     # Collect employee data
     employee_url = (
-            (f"https://jsonplaceholder.typicode.com/users/{employee_id}")
+        f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     )
     employee_response = requests.get(employee_url)
     employee_data = employee_response.json()
@@ -39,8 +39,7 @@ def export_employee_todo_to_csv(employee_id):
 
     # Collect TODO list data
     todos_url = (
-            f"https://jsonplaceholder.typicode.com/"
-            f"todos?userId={employee_id}"
+        f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     )
     todos_response = requests.get(todos_url)
     todos_data = todos_response.json()
@@ -61,9 +60,10 @@ def export_employee_todo_to_csv(employee_id):
                 'USER_ID': employee_id,
                 'USERNAME': employee_name,
                 'TASK_COMPLETED_STATUS': str(task.get('completed')),
-                'TASK_TITLE': task.get('title')})
+                'TASK_TITLE': task.get('title')
+            })
 
-    print(f"TODO list progress exported to {csv_filename}")
+    print(f"TODO list exported to {csv_filename}")
 
 
 if __name__ == "__main__":
