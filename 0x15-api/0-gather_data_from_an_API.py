@@ -17,6 +17,7 @@ def get_employee_todo_progress(employee_id):
     Returns:
         None
     """
+
     try:
         employee_id = int(employee_id)
     except ValueError:
@@ -25,6 +26,7 @@ def get_employee_todo_progress(employee_id):
 
     # Collect employee data
     employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     employee_response = requests.get(employee_url)
     employee_data = employee_response.json()
 
@@ -35,7 +37,6 @@ def get_employee_todo_progress(employee_id):
     employee_name = employee_data.get('name')
 
     # Collect TODO list data
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     todos_response = requests.get(todos_url)
     todos_data = todos_response.json()
 
