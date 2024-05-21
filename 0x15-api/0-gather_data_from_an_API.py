@@ -6,7 +6,7 @@ A python script that collects and displays an employee's TODO list progress.
 import requests
 import sys
 
-def get_employee_todo_progress(employee_id):
+def  get_employee_todo_progress(employee_id):
     """
     Collects and displays the TODO list progress of a given employee.
 
@@ -34,7 +34,8 @@ def get_employee_todo_progress(employee_id):
     employee_name = employee_data.get('name')
 
     # Collect TODO list data
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
+    todos_url = (f"https://jsonplaceholder.typicode.com/todos?
+            userId={employee_id}")
     todos_response = requests.get(todos_url)
     todos_data = todos_response.json()
 
@@ -43,7 +44,8 @@ def get_employee_todo_progress(employee_id):
     number_of_done_tasks = len(done_tasks)
 
     # Print employee TODO list progress
-    print(f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
+    print(f"Employee {employee_name} is done with
+            tasks({number_of_done_tasks}/{total_tasks}):")
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
